@@ -42,5 +42,10 @@ jobs:
     needs: [job_2, job_3]
     steps:
       - run: "echo Job: ${{github.job}}"
-    
+
+  deploy:
+    if: ${{github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying branch ${{ github.ref }}"
     
